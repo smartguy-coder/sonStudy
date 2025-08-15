@@ -1,4 +1,5 @@
 import winsound
+import statistics
 
 
 def make_noise(duration_sec: int = 1) -> None:
@@ -23,6 +24,11 @@ def is_given_name_like_founder_name(given_name: str) -> bool:
     founder_name = get_founder_name()
     is_name_like_founder_name = given_name.lower() == founder_name.lower()
     return is_name_like_founder_name
+
+
+def get_average(numbers: list[float]) -> float:
+    return statistics.fmean(numbers)
+
 
 # passengers = ['you', 'I']
 # print(get_people_in_car(passengers, 'Vanya'))
