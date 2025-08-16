@@ -30,15 +30,18 @@ def get_average(numbers: list[float]) -> float:
     return statistics.fmean(numbers)
 
 
-# passengers = ['you', 'I']
-# print(get_people_in_car(passengers, 'Vanya'))
-# print(get_people_in_car(passengers, driver='Vanya'))
-# print(get_people_in_car(passengers=passengers, driver='Vanya'))
-# print(get_people_in_car(driver='Vanya', passengers=passengers))
-# print(get_people_in_car( passengers=passengers))
-#
-# print_result = print(333333333)
-# print(print_result)
-#
-# make_noise()
-# make_noise(duration_sec=5)
+def is_correct_triangle(side_1: float, side_2: float, side_3: float) -> bool:
+    for side in (side_1, side_2, side_3):
+        if side <= 0:
+            return False
+    correct_length_1_2 = side_1 + side_2 > side_3
+    correct_length_1_3 = side_1 + side_3 > side_2
+    correct_length_2_3 = side_3 + side_2 > side_1
+    return correct_length_1_3 and correct_length_1_2 and correct_length_2_3
+
+
+def get_triangle_perimeter(side_1: float, side_2: float, side_3: float) -> float:
+    if not is_correct_triangle(side_1, side_2, side_3):
+        raise ValueError("wrong triangle data")
+    perimeter = side_1 + side_2 + side_3
+    return perimeter
